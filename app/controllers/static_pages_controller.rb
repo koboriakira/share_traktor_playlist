@@ -12,7 +12,6 @@ class StaticPagesController < ApplicationController
     playlist_xml = REXML::Document.new(open(content))
 
     primary_keys = []
-    debugger
     playlist_xml.elements.each('NML/PLAYLISTS/NODE/SUBNODES/NODE/PLAYLIST/ENTRY') do |e|
       primary_keys.push(e.elements["PRIMARYKEY"].attributes["KEY"])
     end
