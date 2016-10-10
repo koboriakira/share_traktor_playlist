@@ -5,6 +5,10 @@ testupload
 
 <div id="filecontent">
   <% @content[:playlist].each do |p| %>
-    <%= p[:TITLE] %><br />
+    <%= p[:TITLE] %>
+    <% unless p[:AMZ_URL].nil? then %>
+      (<%= link_to 'Amazon mp3', p[:AMZ_URL] %>)
+    <% end %>
+    <br />
   <% end %>
 </div>

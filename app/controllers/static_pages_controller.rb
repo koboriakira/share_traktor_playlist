@@ -15,6 +15,7 @@ class StaticPagesController < ApplicationController
     playlist_xml.elements.each('NML/PLAYLISTS/NODE/SUBNODES/NODE/PLAYLIST/ENTRY') do |e|
       primary_keys.push(e.elements["PRIMARYKEY"].attributes["KEY"])
     end
+
     playlists = []
     playlist_xml.elements.each('NML/COLLECTION/ENTRY') do |e|
       playlist = {}
@@ -29,6 +30,18 @@ class StaticPagesController < ApplicationController
       playlist[:PATH] = e.elements["LOCATION"].attributes["VOLUME"] +
                         e.elements["LOCATION"].attributes["DIR"] +
                         e.elements["LOCATION"].attributes["FILE"]
+      Amazon::Ecs.debug = true
+      sleep(10)
+      amz_search_results = Amazon::Ecs.item_search(
+        playlist[:TITLE] + playlist[:ARTIST], # キーワード
+        search_index: 'MP3Downloads', # 検索対象の設定
+        dataType: 'script',
+        responce_group: 'Small',
+        country:  'jp'
+      )
+      unless amz_search_results.items.empty? then
+        playlist[:AMZ_URL] = amz_search_results.items[0].get('DetailPageURL')
+      end
       playlists.push(playlist)
     end
 
@@ -42,4 +55,5 @@ class StaticPagesController < ApplicationController
       end
     end
   end
+
 end
