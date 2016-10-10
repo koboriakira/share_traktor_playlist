@@ -1,0 +1,10 @@
+testupload
+<div id="filename">
+  <%= @content[:filename] %>
+</div>
+
+<div id="filecontent">
+  <% @content[:playlist].each do |p| %>
+    <%= p[:TITLE] %><br />
+  <% end %>
+</div>
