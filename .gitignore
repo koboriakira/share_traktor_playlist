@@ -16,4 +16,5 @@
 !/log/.keep
 /tmp
 
+# development environment var
 .env
