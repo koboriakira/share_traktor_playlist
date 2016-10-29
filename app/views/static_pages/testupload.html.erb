@@ -1,1 +1,7 @@
-testupload
+<h2>uploaded!!</h2>
+<% if @playlist.id != 4 %>
+  <%= link_to '送信したプレイリストを確認', playlist_path(@playlist) %>
+<% else %>
+  <p>現在、プレイリストを処理中です。</p>
+  <%= link_to '送信したプレイリストを確認', playlist_path(@playlist) %>
+<% end %>
