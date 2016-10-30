@@ -18,3 +18,7 @@
 
 # development environment var
 .env
+
+# ignore DS_Store file
+*/.DS_Store
+.DS_Store

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<NML VERSION="19"><HEAD COMPANY="www.native-instruments.com" PROGRAM="Traktor"></HEAD>
+<MUSICFOLDERS></MUSICFOLDERS>
+<COLLECTION ENTRIES="2">
+  <ENTRY MODIFIED_DATE="2016/7/12" MODIFIED_TIME="56237" AUDIO_ID="AOI7q6qru7z///////////////////////////////////////////////////////////////////////////////////////////////////////////////////7////////////////////////////////v7//////////////v/////ZmIiIiK/+///t/v/ZiHd3d5/////+/9r//////////////////////////////////////////////////////////////////////////////////////////////////////////v/v/+/+z//////////+u1AA==" TITLE="リライト" ARTIST="ASIAN KUNG-FU GENERATION"><LOCATION DIR="/:Users/:koboriakira/:Music/:iTunes/:iTunes Media/:Music/:ASIAN KUNG-FU GENERATION/:ソルファ/:" FILE="02 リライト.mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+<ALBUM OF_TRACKS="12" TRACK="2" TITLE="\t@"></ALBUM>
+<MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+<INFO BITRATE="320000" GENRE="J-ROCK" LABEL="Tofu" RATING=" easy guitar 4+8bar-intro" COVERARTID="117/V1UU53CSI3R2ZDWTBHDTBRFGFELD" KEY="5d" PLAYCOUNT="6" PLAYTIME="226" PLAYTIME_FLOAT="225.567" IMPORT_DATE="2016/10/10" LAST_PLAYED="2016/10/8" RELEASE_DATE="2004/1/1" FLAGS="12" FILESIZE="8964"></INFO>
+<TEMPO BPM="178.995" BPM_QUALITY="100"></TEMPO>
+<LOUDNESS PEAK_DB="-0.070468" PERCEIVED_DB="0" ANALYZED_DB="-1.83792"></LOUDNESS>
+<MUSICAL_KEY VALUE="4"></MUSICAL_KEY>
+<CUE_V2 NAME="Beat Marker" DISPL_ORDER="0" TYPE="4" START="128.6" LEN="0" REPEATS="-1" HOTCUE="0"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="5491.89" LEN="0" REPEATS="-1" HOTCUE="1"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="139574" LEN="0" REPEATS="-1" HOTCUE="5"></CUE_V2>
+</ENTRY>
+<ENTRY MODIFIED_DATE="2016/7/12" MODIFIED_TIME="56205" AUDIO_ID="AXMDRDRFVEJVRENDRFNEVEZmqnm4eqeLhpqHuHqoioaZh6l5p3qXinepeKhql4uXqom5ipd7l5qHuYmoipmaiKmZqYqYmoerh6h6qIqHqoi4eqiLl5qHqXmoe5eah6l5qHqYioeZibl6qHqXqoe5iaiKqJp3uXioepeLh6p4uIqoe5eqiLmaqHuXmoepiah6mJqIqoipipiLh6p3uYmoi5mqmLmJqYqYi4i6mah6qJqHqpq4ipiqmLuXl3inVEUzdWVoqGVnVndGeLh2d3uYZme5hXiLqIiIuomoiqmrmKqZuYq5ipeqiKh5qIqGiXaHVmVEMiIhERAAAAAAAAAAAA==" TITLE="今夜はブギー・バック (Nice Vocal)" ARTIST="小沢健二"><LOCATION DIR="/:Users/:koboriakira/:Music/:iTunes/:iTunes Media/:Music/:小沢健二/:Life/:" FILE="06 今夜はブギー・バック (Nice Vocal).mp3" VOLUME="Macintosh HD" VOLUMEID="Macintosh HD"></LOCATION>
+<ALBUM OF_TRACKS="9" TRACK="6" TITLE="Life"></ALBUM>
+<MODIFICATION_INFO AUTHOR_TYPE="user"></MODIFICATION_INFO>
+<INFO BITRATE="320000" GENRE="Pop" RATING=" vocal cut-in 8bar-intro chorus-bridge" PLAYCOUNT="3" PLAYTIME="372" PLAYTIME_FLOAT="371.017" IMPORT_DATE="2016/10/10" LAST_PLAYED="2016/10/8" RELEASE_DATE="1994/1/1" FLAGS="12" FILESIZE="14496"></INFO>
+<TEMPO BPM="92.9661" BPM_QUALITY="100"></TEMPO>
+<LOUDNESS PEAK_DB="-0.05971" PERCEIVED_DB="4.75423" ANALYZED_DB="4.75423"></LOUDNESS>
+<MUSICAL_KEY VALUE="7"></MUSICAL_KEY>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="160.812" LEN="0" REPEATS="-1" HOTCUE="1"></CUE_V2>
+<CUE_V2 NAME="AutoGrid" DISPL_ORDER="0" TYPE="4" START="2097" LEN="0" REPEATS="-1" HOTCUE="0"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="146666" LEN="0" REPEATS="-1" HOTCUE="5"></CUE_V2>
+<CUE_V2 NAME="n.n." DISPL_ORDER="0" TYPE="0" START="249929" LEN="0" REPEATS="-1" HOTCUE="6"></CUE_V2>
+</ENTRY>
+</COLLECTION>
+<SETS ENTRIES="0"></SETS>
+<PLAYLISTS>
+  <NODE TYPE="FOLDER" NAME="$ROOT">
+    <SUBNODES COUNT="1">
+      <NODE TYPE="PLAYLIST" NAME="test"><PLAYLIST ENTRIES="2" TYPE="LIST" UUID="d818876d04ba472da36531f5f0de8a92">
+        <ENTRY>
+          <PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:koboriakira/:Music/:iTunes/:iTunes Media/:Music/:小沢健二/:Life/:06 今夜はブギー・バック (Nice Vocal).mp3">
+          </PRIMARYKEY>
+</ENTRY>
+<ENTRY><PRIMARYKEY TYPE="TRACK" KEY="Macintosh HD/:Users/:koboriakira/:Music/:iTunes/:iTunes Media/:Music/:ASIAN KUNG-FU GENERATION/:ソルファ/:02 リライト.mp3"></PRIMARYKEY>
+</ENTRY>
+</PLAYLIST>
+</NODE>
+</SUBNODES>
+</NODE>
+</PLAYLISTS>
+</NML>
