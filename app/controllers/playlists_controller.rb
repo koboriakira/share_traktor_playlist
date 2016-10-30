@@ -10,8 +10,7 @@ class PlaylistsController < ApplicationController
     #サービスクラス作って、処理をさせたいな〜
     #ImportNml.new(1).test
     nml = file_params[:upload_file];
-    @playlist = Playlist.new(file_name: nml..original_filename)
-    
+    # @playlist = Playlist.new(file_name: nml..original_filename)
   end
 
   private
