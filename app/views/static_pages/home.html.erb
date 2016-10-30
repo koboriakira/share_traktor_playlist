@@ -1,7 +1,34 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
-<%= form_for(:content, url: playlists_path) do |f| %>
-  <%= f.label :upload_file %>
-  <%= f.file_field :upload_file %>
-  <%= f.submit "Send", class: "btn btn-primary" %>
-<% end %>
+<h2>このアプリケーションでできること</h2>
+<ul>
+  <li>
+    Traktorのプレイリストファイル（NML形式）をアップロードし、公開することができます。</li>
+  <li>
+    流した楽曲がAmazonMP3で発売されているものは、その購入先リンクをつくります。<br/>
+    （※現在は@kobori_akiraのアフェリエイトIDが貼られています。修正予定。）</li>
+</ul>
+
+<h2>アップロード</h2>
+<div id="import_form">
+  <%= form_for(:content, url: playlists_path) do |f| %>
+    <div class="form-parts">
+      <%= f.label :title %><br/>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="form-parts">
+      <%= f.label :upload_file %>
+      <%= f.file_field :upload_file %>
+    </div>
+
+    <div class="form-parts">
+      <%= f.submit "Send", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<h2>注意点・開発中</h2>
+<ul>
+  <li>ユーザー機能を追加し、作成したプレイリストの情報を修正できるようにします。</li>
+  <li>アフェリエイトIDを、ユーザーが自由に設定できるようにします。</li>
+  <li>ページデザインの向上、２カ国語対応。</li>
+</ul>

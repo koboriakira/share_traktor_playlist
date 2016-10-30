@@ -12,7 +12,7 @@ class PlaylistsController < ApplicationController
     #サービスクラス作って、処理をさせたいな〜
     @playlist = Playlist.new(
       file_name: 'test-file_name',
-      title: 'test-title',
+      title: file_params[:title],
       file_type: 1,
       remarks: 'test-remarks')
     @playlist.save
@@ -32,10 +32,7 @@ class PlaylistsController < ApplicationController
     end
   end
 
-  private
-    def file_params
-      params.require(:content).permit(:upload_file)
-    end
+
 
   private
     def findOrCreateArtistId(artist_name)
@@ -55,5 +52,10 @@ class PlaylistsController < ApplicationController
       else
         return nil
       end
+    end
+
+  private
+    def file_params
+      params.require(:content).permit(:upload_file, :title)
     end
 end

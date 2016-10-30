@@ -1,5 +1,27 @@
-<h2><%= @playlist.file_name %></h2>
+<div class="playlist-title">
+  <h2><%= @playlist.title %></h2>
+</div>
 
-<% @playlist.songs.each do |song| %>
-  <%= song.artist.artist_name || "" %> - <%= song.title %><br/>
-<% end %>
+<div class="twitter-btn">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-hashtags="share_traktor_playlist">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</div>
+
+<table id="playlist_table">
+  <tr>
+    <th>曲順</th>
+    <th>アーティスト名</th>
+    <th>曲名</th>
+    <th></th>
+  </tr>
+  <% count = 1 %>
+  <% @playlist.songs.each do |song| %>
+    <tr>
+      <td class="count"><%= count %><% count += 1 %></td>
+      <td class="artist-name"><%= song.artist.artist_name || "" %></td>
+      <td class="title"><%= song.title %></td>
+      <td class="title">
+        <%= link_to 'buy mp3', '#' %>
+      </td>
+    </tr>
+  <% end %>
+</table>

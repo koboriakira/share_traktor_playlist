@@ -1,9 +1,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* Webフォント */
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+
+
 /* mixins, variables, etc. */
 
+$basic-background-color: #696f6f;
+$basic-text-color: #f1f1f1;
+
+$header-background-color: #3b3f40;
+
+$highlight_text_color: #f5b49b;
+
 $gray-medium-light: #eaeaea;
+
+html, body {
+  margin: 0;
+  paddhing: 0;
+  border: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+}
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -14,7 +32,13 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  background-color: $basic-background-color;
+  color: $basic-text-color;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
 }
 
 section {
@@ -40,18 +64,12 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 3em;
-  letter-spacing: -2px;
-  margin-bottom: 30px;
-  text-align: center;
+  letter-spacing: -1px;
 }
 
 h2 {
   font-size: 1.2em;
-  letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
   font-weight: normal;
-  color: $gray-light;
 }
 
 p {
@@ -59,21 +77,29 @@ p {
   line-height: 1.7em;
 }
 
+ul {
+  li {
+    padding: 0.5em 0;
+  }
+}
+
 
 /* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
+header {
+  margin: 0;
+  padding: 0;
+  background-color: $header-background-color;
+}
+
+#app_title {
+  padding: 20px 0;
+  text-align: center;
+  h1 {
+    color: $highlight_text_color;
+  }
+  #app_discription {
+    font-size: 0.9em;
   }
 }
 
@@ -102,6 +128,62 @@ footer {
     }
   }
 }
+
+/* Content */
+#content {
+  max-width: 800px;
+  margin: 60px auto 0;
+
+  h2 {
+    margin-top: 3em;
+    color: $highlight_text_color;
+  }
+
+  .playlist-title {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .twitter-btn {
+    text-align: center;
+  }
+}
+
+#import_form {
+  margin: 1em 0 3em 3em;
+
+
+  .form-parts {
+    margin-bottom: 2em;
+  }
+}
+
+/* Playlist */
+#playlist_table {
+  width: 100%;
+  margin: 30px auto;
+  border: 1px solid #555;
+  tr:nth-child(even) {
+    background-color: #323433;
+  }
+  tr:nth-child(odd) {
+    background-color: #262827;
+  }
+  tr {
+    .count {width: 10%}
+    .artist-name {width: 40%}
+    .title {width: 40%}
+    .amzmp3url {width: 10%}
+    th,td {
+      border: 1px solid #555;
+      padding: 0.2em 0.5em;
+    }
+    th {
+      font-weight: 100;
+    }
+  }
+}
+#323433
 
 /* miscellaneous */
 
