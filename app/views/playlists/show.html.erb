@@ -1,4 +1,4 @@
-<h2>playlist</h2>
+<h2><%= @playlist.file_name %></h2>
 
 <% @playlist.songs.each do |song| %>
   <%= song.artist.artist_name %> - <%= song.title %><br/>

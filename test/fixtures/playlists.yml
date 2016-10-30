@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-#
-# one:
-#   user_id: 1
-#   file_name: MyString
-#   file_type: 1
-#
-# two:
-#   user_id: 1
-#   file_name: MyString
-#   file_type: 1
+
+without_file_name:
+  user_id: 1
+  file_type: 1
+  title: test_title
+  remarks: test_remarks
+
+without_title:
+  user_id: 1
+  file_name: test.nml
+  file_type: 1
+  remarks: test_remarks
