@@ -26,13 +26,24 @@ class PlaylistsController < ApplicationController
                        artist_id: artist_id)
     end
     if @playlist.save then
+      check_amz_mp3_url(@playlist.songs)
       redirect_to :action => 'show', :id => @playlist.id
     else
       redirect_to :action => 'new'
     end
   end
 
-
+  private
+    def check_amz_mp3_url(songs)
+      params = []
+      songs.each do |song|
+        param = {}
+        param[:SONG_ID] = song.id
+        param[:KEYWORD] = song.artist.artist_name + ' ' + song.title
+        params.push(param)
+      end
+      AmazonJob.perform_later(params)
+    end
 
   private
     def findOrCreateArtistId(artist_name)

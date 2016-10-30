@@ -6,22 +6,31 @@
   <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-hashtags="share_traktor_playlist">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 
-<table id="playlist_table">
-  <tr>
-    <th>曲順</th>
-    <th>アーティスト名</th>
-    <th>曲名</th>
-    <th></th>
-  </tr>
-  <% count = 1 %>
-  <% @playlist.songs.each do |song| %>
+<div id="playlist_table">
+  <table>
     <tr>
-      <td class="count"><%= count %><% count += 1 %></td>
-      <td class="artist-name"><%= song.artist.artist_name || "" %></td>
-      <td class="title"><%= song.title %></td>
-      <td class="title">
-        <%= link_to 'buy mp3', '#' %>
-      </td>
+      <th>曲順</th>
+      <th>アーティスト名</th>
+      <th>曲名</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+    <% count = 1 %>
+    <% @playlist.songs.each do |song| %>
+      <tr>
+        <td class="count"><%= count %><% count += 1 %></td>
+        <td class="artist-name"><%= song.artist.artist_name || "" %></td>
+        <td class="title"><%= song.title %></td>
+        <td class="title">
+          <% if song.amzmp3url && song.amzmp3url != 'none' then %>
+            <%= link_to 'buy mp3', song.amzmp3url, {:target => '_blank'} %>
+          <% elsif song.amzmp3url == 'none' then %>
+            <span><%= song.amzmp3url %></span>
+          <% else %>
+            <span style="color: #555">検索中</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <p style="font-size: 0.9em; color: #bbb; margin-top: 1em;">※Amazon mp3のリンクURLは、数分後に更新・表示されます。</p>
+</div>

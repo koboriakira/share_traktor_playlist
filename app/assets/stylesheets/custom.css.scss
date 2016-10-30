@@ -162,7 +162,12 @@ footer {
 #playlist_table {
   width: 100%;
   margin: 30px auto;
-  border: 1px solid #555;
+  table {
+    width: 100%;
+  }
+  table, th, td {
+    border: 1px solid #555;
+  }
   tr:nth-child(even) {
     background-color: #323433;
   }
@@ -175,8 +180,7 @@ footer {
     .title {width: 40%}
     .amzmp3url {width: 10%}
     th,td {
-      border: 1px solid #555;
-      padding: 0.2em 0.5em;
+      padding: 0.3em 0.5em;
     }
     th {
       font-weight: 100;
