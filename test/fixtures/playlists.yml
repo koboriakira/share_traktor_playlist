@@ -11,3 +11,9 @@ without_title:
   file_name: test.nml
   file_type: 1
   remarks: test_remarks
+
+without_user_id:
+  title: test_title
+  file_name: test.nml
+  file_type: 1
+  remarks: test_remarks

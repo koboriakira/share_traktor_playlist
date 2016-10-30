@@ -1,4 +1,4 @@
 class Artist < ActiveRecord::Base
   validates :artist_name, presence: true
-  belongs_to :song
+  has_many :song, foreign_key: "artist_id"
 end

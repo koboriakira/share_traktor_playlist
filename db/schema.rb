@@ -47,12 +47,12 @@ ActiveRecord::Schema.define(version: 20161030052715) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer  "playlist_id"
     t.string   "title"
     t.integer  "artist_id"
     t.string   "amzmp3url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "playlist_id"
   end
 
 end

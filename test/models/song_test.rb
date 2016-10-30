@@ -16,7 +16,7 @@ class SongTest < ActiveSupport::TestCase
 
   test 'should save without artist_id' do
     song = songs(:without_artist_id)
-    assert song.save
+    assert song.save, 'Not saved without artist_id'
   end
 
   test 'should save without amzmp3url' do

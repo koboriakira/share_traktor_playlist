@@ -13,4 +13,9 @@ class PlaylistTest < ActiveSupport::TestCase
     playlist = playlists(:without_title)
     assert_not playlist.save, 'Saved without title'
   end
+
+  test 'should save without user_id' do
+    playlist = playlists(:without_user_id)
+    assert playlist.save, 'Not saved without user_id'
+  end
 end
