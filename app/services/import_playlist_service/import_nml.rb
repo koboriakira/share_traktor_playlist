@@ -20,7 +20,8 @@ module ImportPlaylistService
         songs.push(song)
       end
       if batch_status.isStop? then
-        AmazonJob.perform_later(songs)
+        puts 'AmazonJob起動'
+        AmazonJob.perform_later
       end
       return songs
     end

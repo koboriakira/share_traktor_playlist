@@ -7,6 +7,9 @@ class AmazonJob < ActiveJob::Base
 
   def perform()
     Amazon::Ecs.debug = true
+    songs = Song.where(amzmp3url: nil)
+    puts '取得したSongリスト'
+    puts songs
     songs.each do |song|
       if song.amzmp3url then
         puts '検索済'
