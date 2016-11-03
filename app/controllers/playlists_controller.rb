@@ -7,6 +7,9 @@ class PlaylistsController < ApplicationController
   end
 
   def create
+    import_nml_service = ImportPlaylistService::ImportNml.new(send_params[:upload_file])
+    songs = import_nml_service.execute
+
     @playlist = Playlist.new(
       user_id: send_params[:user_id],
       file_name: send_params[:upload_file].original_filename,
@@ -15,9 +18,6 @@ class PlaylistsController < ApplicationController
       # Traktor以外のプレイリストを読み込むようになったとき、
       # これが活きてくる
       remarks: send_params[:remarks])
-
-    import_nml_service = ImportPlaylistService::ImportNml.new(send_params[:upload_file])
-    songs = import_nml_service.execute
 
     if @playlist.save then
       songs.each do |song|

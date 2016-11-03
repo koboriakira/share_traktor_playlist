@@ -13,8 +13,8 @@ class AmazonJob < ActiveJob::Base
         next
       end
       sleep(SLEEP_TIME)
-      artist_name = Artist.find_by(artist_id: song.artist_id)
-      amz_search_results = amz_item_search(artist_name + ' ' + song.title)
+      artist = Artist.find_by(id: song.artist_id)
+      amz_search_results = amz_item_search(artist.artist_name + ' ' + song.title)
       unless amz_search_results.items.empty? then
         puts '検索ヒット'
         song.amzmp3url = amz_search_results.items[0].get('DetailPageURL');
