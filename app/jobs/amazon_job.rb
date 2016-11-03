@@ -3,7 +3,7 @@ require 'sucker_punch/async_syntax'
 class AmazonJob < ActiveJob::Base
   queue_as :default
 
-  SLEEP_TIME = 15
+  SLEEP_TIME = 1
 
   def perform()
     unless processing_batch_statused.empty? then
@@ -12,14 +12,11 @@ class AmazonJob < ActiveJob::Base
 
     Amazon::Ecs.debug = true
     while(batch = waiting_batch_status)
-      debugger
-      song = Song.find_by(id: batch.song_id)
-      if song.amzmp3url then
-        puts '検索済'
-        next
-      end
+      batch.update_status(BatchStatus::PROCESSING)
       sleep(SLEEP_TIME)
-      amz_search_results = amz_item_search(song.artist.artist_name + ' ' + song.title)
+      song = Song.find_by(id: batch.song_id)
+      sleep(SLEEP_TIME)
+      amz_search_results = amz_item_search(batch.keyword)
       unless amz_search_results.items.empty? then
         puts '検索ヒット'
         song.amzmp3url = amz_search_results.items[0].get('DetailPageURL');
@@ -30,35 +27,10 @@ class AmazonJob < ActiveJob::Base
       if song.save then
         puts 'amzmp3urlの更新成功'
       end
+      batch.update_status(BatchStatus::COMPLETE)
+      sleep(SLEEP_TIME)
     end
   end
-
-  # def perform(playlists)
-  #   playlists.each do |playlist|
-  #     sleep(SLEEP_TIME)
-  #     @song = Song.new()
-  #     @song[:playlist_id] = playlist[:PLAYLIST_ID]
-  #     @song[:title] = playlist[:TITLE]
-  #     @song[:artist_id] = playlist[:ARTIST_ID]
-  #     Amazon::Ecs.debug = true
-  #     amz_search_results = Amazon::Ecs.item_search(
-  #       playlist[:TITLE] + playlist[:ARTIST_NAME], # キーワード
-  #       search_index: 'MP3Downloads', # 検索対象の設定
-  #       dataType: 'script',
-  #       responce_group: 'Small',
-  #       country:  'jp'
-  #     )
-  #     unless amz_search_results.items.empty? then
-  #       @song[:amzmp3url] = amz_search_results.items[0].get('DetailPageURL')
-  #     end
-  #
-  #     if @song.save then
-  #       puts "save success"
-  #     else
-  #       puts "save failure"
-  #     end
-  #   end
-  # end
 
   private
     def processing_batch_statused

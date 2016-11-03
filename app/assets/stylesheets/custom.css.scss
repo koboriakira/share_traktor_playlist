@@ -16,18 +16,14 @@ $highlight_text_color: #f5b49b;
 
 $gray-medium-light: #eaeaea;
 
-$link_color: #a0a0a0;
-$link_hover_color: #333333;
+$link_color: #c0c0ff;
+$link_hover_color: #a0a0c0;
 
 html, body {
   margin: 0;
   paddhing: 0;
   border: 0;
   font-family: 'Noto Sans JP', sans-serif;
-}
-
-a {
-  text-decoration: none;
 }
 
 @mixin box_sizing {
@@ -65,10 +61,12 @@ textarea {
 
 a {
    color: $link_color;
+   text-decoration: none;
 }
 
 a:hover {
     color: $link_hover_color;
+    text-decoration: none;
 }
 
 /* typography */
@@ -175,10 +173,10 @@ footer {
     background-color: #262827;
   }
   tr {
-    .count {width: 10%}
-    .artist-name {width: 40%}
-    .title {width: 40%}
-    .amzmp3url {width: 10%}
+    .count {width: 10%;}
+    .artist-name {width: 40%;}
+    .title {width: 40%;}
+    .amzmp3url {width: 10%;}
     th,td {
       padding: 0.3em 0.5em;
     }
