@@ -5,12 +5,16 @@ class AmazonJob < ActiveJob::Base
 
   SLEEP_TIME = 15
 
-  def perform(params)
+  def perform(songs)
     Amazon::Ecs.debug = true
-    params.each do |param|
-      song = Song.find_by(id: param[:SONG_ID])
+    songs.each do |song|
+      if song.amzmp3url then
+        puts '検索済'
+        next
+      end
       sleep(SLEEP_TIME)
-      amz_search_results = amz_item_search(param[:KEYWORD])
+      artist_name = Artist.find_by(artist_id: song.artist_id)
+      amz_search_results = amz_item_search(artist_name + ' ' + song.title)
       unless amz_search_results.items.empty? then
         puts '検索ヒット'
         song.amzmp3url = amz_search_results.items[0].get('DetailPageURL');

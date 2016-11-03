@@ -1,6 +1,5 @@
 class Song < ActiveRecord::Base
-  validates :playlist_id, presence: true
   validates :title, presence: true
-  belongs_to :playlist
+  has_one :playlist_item
   belongs_to :artist
 end

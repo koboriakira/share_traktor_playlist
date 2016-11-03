@@ -1,6 +1,4 @@
 class PlaylistsController < ApplicationController
-  include Nml
-
   def index
   end
 
@@ -18,36 +16,20 @@ class PlaylistsController < ApplicationController
       # これが活きてくる
       remarks: send_params[:remarks])
 
-    import_nml_service = ImportPlaylistService::ImportNml.new(
-      {playlist_id: @playlist.id,
-       upload_file: send_params[:upload_file],
-       user_id: nil})
-    song_params = import_nml_service.execute
+    import_nml_service = ImportPlaylistService::ImportNml.new(send_params[:upload_file])
+    songs = import_nml_service.execute
 
     if @playlist.save then
-      song_params.each do |param|
-        unless @playlist.songs.build(param).save then
+      songs.each do |song|
+        unless @playlist.playlist_items.build(playlist_id: @playlist.id, song_id: song.id).save then
           redirect_to root_path
         end
       end
-      check_amz_mp3_url(@playlist.songs)
       redirect_to :action => 'show', :id => @playlist.id
     else
       redirect_to root_path
     end
   end
-
-  private
-    def check_amz_mp3_url(songs)
-      params = []
-      songs.each do |song|
-        param = {}
-        param[:SONG_ID] = song.id
-        param[:KEYWORD] = song.artist.artist_name + ' ' + song.title
-        params.push(param)
-      end
-      # AmazonJob.perform_later(params)
-    end
 
   private
     def send_params

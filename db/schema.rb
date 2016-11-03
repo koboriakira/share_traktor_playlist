@@ -11,20 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030052715) do
+ActiveRecord::Schema.define(version: 20161103143841) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "artist_name"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "playlist_files", force: :cascade do |t|
-    t.string   "file_name"
-    t.binary   "file"
-    t.integer  "dj_soft_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "playlist_items", force: :cascade do |t|
@@ -50,9 +42,8 @@ ActiveRecord::Schema.define(version: 20161030052715) do
     t.string   "title"
     t.integer  "artist_id"
     t.string   "amzmp3url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "playlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

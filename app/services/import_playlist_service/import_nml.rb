@@ -2,22 +2,24 @@ require 'rexml/document'
 
 module ImportPlaylistService
   class ImportNml
-    attr_reader :playlist_id, :upload_file
+    attr_reader :upload_file
 
-    def initialize(args)
-      @playlist_id = args[:playlist_id]
-      @upload_file = args[:upload_file]
+    def initialize(upload_file)
+      @upload_file = upload_file
     end
 
     def execute
       songs = []
       get_songs_from_xml.each do |data|
-        song = {}
-        song[:playlist_id] = playlist_id
-        song[:title] = data[:TITLE]
-        song[:artist_id] = findOrCreateArtist(data[:ARTIST_NAME]).id
+        artist_id = findOrCreateArtist(data[:ARTIST_NAME]).id
+        title = data[:TITLE]
+        song = Song.find_by(artist_id: artist_id, title: title)
+        unless song then
+          song = Song.create(artist_id: artist_id, title: title)
+        end
         songs.push(song)
       end
+      AmazonJob.perform_later(songs)
       return songs
     end
 

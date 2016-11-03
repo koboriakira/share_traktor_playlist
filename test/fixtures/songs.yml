@@ -1,21 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-without_playlist_id:
-  title: test_title
-  artist_id: 1
-  amzmp3url: http://www.example.com/
-
 without_title:
-  playlist_id: 1
   artist_id: 1
   amzmp3url: http://www.example.com/
 
 without_artist_id:
-  playlist_id: 1
   title: test_title
   amzmp3url: http://www.example.com/
 
 without_amzmp3url:
-  playlist_id: 1
   title: test_title
   artist_id: 1

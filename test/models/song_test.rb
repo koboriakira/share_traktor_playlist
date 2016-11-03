@@ -4,11 +4,6 @@ class SongTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-  test 'should not save without playlist_id' do
-    song = songs(:without_playlist_id)
-    assert_not song.save
-  end
-
   test 'should not save without title' do
     song = songs(:without_title)
     assert_not song.save
