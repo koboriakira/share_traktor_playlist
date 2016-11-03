@@ -5,7 +5,7 @@ class AmazonJob < ActiveJob::Base
 
   SLEEP_TIME = 15
 
-  def perform(songs)
+  def perform()
     Amazon::Ecs.debug = true
     songs.each do |song|
       if song.amzmp3url then

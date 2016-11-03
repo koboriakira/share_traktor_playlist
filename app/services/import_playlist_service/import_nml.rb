@@ -19,7 +19,9 @@ module ImportPlaylistService
         end
         songs.push(song)
       end
-      AmazonJob.perform_later(songs)
+      if batch_status.isStop? then
+        AmazonJob.perform_later(songs)
+      end
       return songs
     end
 
@@ -64,6 +66,16 @@ module ImportPlaylistService
     private
       def findOrCreateArtist(artist_name)
         Artist.find_by(artist_name: artist_name) || Artist.create(artist_name: artist_name)
+      end
+
+    private
+      def batch_status
+        tmp = BatchStatus.all
+        if tmp.empty? then
+          return BatchStatus.create(status: BatchStatus::STOP, deny_count: 0)
+        else
+          return tmp[0]
+        end
       end
 
     private
