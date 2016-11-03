@@ -1,8 +1,9 @@
 class BatchStatus < ActiveRecord::Base
-  STOP = 0
+  WAITING = 0
   PROCESSING = 1
+  COMPLETE = 2
 
-  def isStop?
-    status == BatchStatus::STOP
+  def is_waiting?
+    status == BatchStatus::WAITING
   end
 end

@@ -5,7 +5,7 @@ class BatchStatusTest < ActiveSupport::TestCase
   #   assert true
   # end
   test 'Return true when status is STOP' do
-    batch_status = batch_statuses(:stop)
-    assert batch_status.isStop?
+    batch_status = batch_statuses(:waiting)
+    assert batch_status.is_waiting?
   end
 end

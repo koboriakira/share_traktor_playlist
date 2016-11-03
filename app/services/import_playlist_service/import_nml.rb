@@ -11,18 +11,17 @@ module ImportPlaylistService
     def execute
       songs = []
       get_songs_from_xml.each do |data|
-        artist_id = findOrCreateArtist(data[:ARTIST_NAME]).id
+        artist = findOrCreateArtist(data[:ARTIST_NAME])
         title = data[:TITLE]
-        song = Song.find_by(artist_id: artist_id, title: title)
+        song = Song.find_by(artist_id: artist.id, title: title)
         unless song then
-          song = Song.create(artist_id: artist_id, title: title)
+          song = Song.create(artist_id: artist.id, title: title)
+          keyword = artist.artist_name + ' ' + song.title
+          BatchStatus.create(song_id: song.id, keyword: keyword, status: BatchStatus::WAITING)
         end
         songs.push(song)
       end
-      if batch_status.isStop? then
-        puts 'AmazonJob起動'
-        AmazonJob.perform_later
-      end
+      AmazonJob.perform_later
       return songs
     end
 

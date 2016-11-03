@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-stop:
+waiting:
   status: 0
-  deny_count: 0
 
-start:
+processing:
   status: 1
-  deny_count: 0
+
+complete:
+  status: 2

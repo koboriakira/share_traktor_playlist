@@ -6,18 +6,20 @@ class AmazonJob < ActiveJob::Base
   SLEEP_TIME = 15
 
   def perform()
+    unless processing_batch_statused.empty? then
+      return
+    end
+
     Amazon::Ecs.debug = true
-    songs = Song.where(amzmp3url: nil)
-    puts '取得したSongリスト'
-    puts songs
-    songs.each do |song|
+    while(batch = waiting_batch_status)
+      debugger
+      song = Song.find_by(id: batch.song_id)
       if song.amzmp3url then
         puts '検索済'
         next
       end
       sleep(SLEEP_TIME)
-      artist = Artist.find_by(id: song.artist_id)
-      amz_search_results = amz_item_search(artist.artist_name + ' ' + song.title)
+      amz_search_results = amz_item_search(song.artist.artist_name + ' ' + song.title)
       unless amz_search_results.items.empty? then
         puts '検索ヒット'
         song.amzmp3url = amz_search_results.items[0].get('DetailPageURL');
@@ -57,6 +59,16 @@ class AmazonJob < ActiveJob::Base
   #     end
   #   end
   # end
+
+  private
+    def processing_batch_statused
+      BatchStatus.where(status: BatchStatus::PROCESSING)
+    end
+
+  private
+    def waiting_batch_status
+      BatchStatus.find_by(status: BatchStatus::WAITING)
+    end
 
   private
     def amz_item_search(keyword)
