@@ -8,6 +8,9 @@ class BatchStatus < ActiveRecord::Base
   end
 
   def update_status(arg_val)
-    status = arg_val
+    self.status = arg_val
+    if self.save then
+      logger.debug('BatchStatus更新: status = ' + arg_val.to_s)
+    end
   end
 end
