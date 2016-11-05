@@ -7,6 +7,16 @@ class PlaylistsController < ApplicationController
   end
 
   def create
+    if (send_params[:upload_file].nil? || send_params[:title].blank?) then
+      render plain: 'プレイリストのタイトルが空白、またはファイルが指定されていません。'
+      return
+    end
+    tmp = send_params[:upload_file].original_filename.split('.')
+    file_ext = tmp[tmp.length - 1]
+    if file_ext != 'nml' then
+      render plain: 'プレイリストのファイルの拡張子が"nml"ではありません。'
+      return
+    end
     import_nml_service = ImportPlaylistService::ImportNml.new(send_params[:upload_file])
     songs = import_nml_service.execute
     AmazonJob.perform_later # Amazonアフェリエイト連携
