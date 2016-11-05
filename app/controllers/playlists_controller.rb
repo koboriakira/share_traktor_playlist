@@ -9,6 +9,7 @@ class PlaylistsController < ApplicationController
   def create
     import_nml_service = ImportPlaylistService::ImportNml.new(send_params[:upload_file])
     songs = import_nml_service.execute
+    AmazonJob.perform_later # Amazonアフェリエイト連携
 
     @playlist = Playlist.new(
       user_id: send_params[:user_id],

@@ -21,7 +21,6 @@ module ImportPlaylistService
         end
         songs.push(song)
       end
-      AmazonJob.perform_later
       return songs
     end
 
